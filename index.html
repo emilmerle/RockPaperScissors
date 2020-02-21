@@ -30,25 +30,31 @@
             if(playerChoiceFinal == computerChoiceFinal){
                 return "Draw!"
             }
-            if(playerChoiceFinal == "rock"){
-                if(computerChoiceFinal == "scissors"){
-                    return "You Win! Rock beats Scissors";
-                }else{
-                    return "You Lose! Paper beats Rock";
-                }
-            }
-            if(playerChoiceFinal == "paper"){
-                if(computerChoiceFinal == "rock"){
-                    return "You Win! Paper beats Rock"
-                }else{
-                    return "You Lose! Scissors beats paper"
-                }
-            }else{
-                if(computerChoiceFinal == "rock"){
-                    return "You Lose! Rock beats Scissors"
-                }else{
-                    return "You Win! Scissors beats Paper"
-                }
+            switch (playerChoiceFinal) {
+                case "rock":
+                    if(computerChoiceFinal == "scissors"){
+                        return "You Win! Rock beats Scissors";
+                    }else{
+                        return "You Lose! Paper beats Rock";
+                    }
+                    break;
+                case "paper":
+                    if(computerChoiceFinal == "rock"){
+                        return "You Win! Paper beats Rock"
+                    }else{
+                        return "You Lose! Scissors beats paper"
+                    }
+                    break;
+                case "scissors":
+                    if(computerChoiceFinal == "rock"){
+                        return "You Lose! Rock beats Scissors"
+                    }else{
+                        return "You Win! Scissors beats Paper"
+                    }
+                    break;
+                default:
+                    return "Wrong input! No winner"
+                    break;
             }
         }
 
@@ -59,7 +65,8 @@
                 let choice = prompt("Your choice?");
                 let temp = playRound(choice, computerPlay());
                 let winner = temp[4];
-                console.log(temp, winner)
+                console.log("Round " + Number(i+1) + ":");
+                console.log(temp);
                 if(winner == "W"){
                     playerScore++;
                 }
@@ -67,6 +74,7 @@
                     computerScore++;
                 }
             }
+
             let message;
             if(playerScore > computerScore){
                 message = "After five rounds you win with " + playerScore + " : " + computerScore;

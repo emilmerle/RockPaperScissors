@@ -6,6 +6,7 @@
 </head>
 <body>
     <script>
+        //returns a pseudorandom choice
         function computerPlay(){
             let choiceNumber = Math.floor(Math.random()*3)
             switch (choiceNumber) {
@@ -24,6 +25,7 @@
             }
         }
 
+        //evaluates a winner of a single round
         function playRound(playerChoice, computerChoice){
             let playerChoiceFinal = playerChoice.toLowerCase();
             let computerChoiceFinal = computerChoice.toLowerCase();
@@ -57,7 +59,7 @@
                     break;
             }
         }
-
+        //game() plays a five rund game
         function game(){
             let playerScore = 0;
             let computerScore = 0;
@@ -67,6 +69,7 @@
                 let winner = temp[4];
                 console.log("Round " + Number(i+1) + ":");
                 console.log(temp);
+                //looks at index 4 of the playRound return value and evaluates the winner:
                 if(winner == "W"){
                     playerScore++;
                 }
@@ -75,6 +78,7 @@
                 }
             }
 
+            //prints a message with the winner
             let message;
             if(playerScore > computerScore){
                 message = "After five rounds you win with " + playerScore + " : " + computerScore;

@@ -3,9 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <title>Rock Paper Scissors by Emil Merle</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
+
+    <div class="container">
+        <button class="buttons" id="rockbutton">Rock</button>
+        <button class="buttons" id="paperbutton">Paper</button>
+        <button class="buttons" id="scissorsbutton">Scissors</button>
+    </div>
+    <div class="container">
+        <div class="winner"></div>
+    </div>
+    <div class="container">
+        <div class="scoreHeader">Score:</div>
+        <div class="score">0:0</div>
+        <div class="matchWinner"></div>
+    </div>
+
     <script>
+
         //returns a pseudorandom choice
         function computerPlay(){
             let choiceNumber = Math.floor(Math.random()*3)
@@ -30,28 +47,28 @@
             let playerChoiceFinal = playerChoice.toLowerCase();
             let computerChoiceFinal = computerChoice.toLowerCase();
             if(playerChoiceFinal == computerChoiceFinal){
-                return "Draw!"
+                return ("Draw! Computer also chose " + playerChoiceFinal)
             }
             switch (playerChoiceFinal) {
                 case "rock":
                     if(computerChoiceFinal == "scissors"){
-                        return "You Win! Rock beats Scissors";
+                        return "You win the round! Rock beats Scissors!";
                     }else{
-                        return "You Lose! Paper beats Rock";
+                        return "You lose the round! Paper beats Rock!";
                     }
                     break;
                 case "paper":
                     if(computerChoiceFinal == "rock"){
-                        return "You Win! Paper beats Rock"
+                        return "You win the round! Paper beats Rock!"
                     }else{
-                        return "You Lose! Scissors beats paper"
+                        return "You lose the round! Scissors beats Paper!"
                     }
                     break;
                 case "scissors":
                     if(computerChoiceFinal == "rock"){
-                        return "You Lose! Rock beats Scissors"
+                        return "You lose the round! Rock beats Scissors!"
                     }else{
-                        return "You Win! Scissors beats Paper"
+                        return "You win the round! Scissors beats Paper!"
                     }
                     break;
                 default:
@@ -59,37 +76,72 @@
                     break;
             }
         }
-        //game() plays a five rund game
-        function game(){
-            let playerScore = 0;
-            let computerScore = 0;
-            for(i = 0; i < 5; i++){
-                let choice = prompt("Your choice?");
-                let temp = playRound(choice, computerPlay());
-                let winner = temp[4];
-                console.log("Round " + Number(i+1) + ":");
-                console.log(temp);
-                //looks at index 4 of the playRound return value and evaluates the winner:
-                if(winner == "W"){
-                    playerScore++;
-                }
-                else if(winner == "L"){
-                    computerScore++;
-                }
+
+        function evaluateChoice(str){
+            result = playRound(str, computerPlay());
+            displayWinner(result);
+            //winner is either W (player wins), L (player loses) or (Draw)
+            let winner = result[4];
+            displayScore(winner);
+        }
+        //Displays the winner message
+        function displayWinner(str){
+            const winner = document.querySelector(".winner");
+            winner.textContent = str;
+        }
+        //updates the Score
+        function displayScore(str){
+            const score = document.querySelector(".score");
+            let matchWinner = document.querySelector(".matchWinner");
+
+            let oldScore = score.textContent;
+
+            //gets the points for each player
+            let playerScore = Number(oldScore[0]);
+            let computerScore = Number(oldScore[2]);
+
+            //checks if score is >= 5 and resets score
+            if((playerScore >= 5) || (computerScore >= 5)){
+                playerScore = 0;
+                computerScore= 0;
+                matchWinner.textContent = "";
             }
 
-            //prints a message with the winner
-            let message;
-            if(playerScore > computerScore){
-                message = "After five rounds you win with " + playerScore + " : " + computerScore;
-            }else if(playerScore < computerScore){
-                message = "After five rounds you lose with " + playerScore + " : " + computerScore;
+            //increases the score
+            switch(str){
+                case "w":
+                    playerScore++;
+                    console.log(playerScore);
+                    break;
+                case "l":
+                    computerScore++;
+                    break;
             }
-            else{
-                message = "After five rounds the score is " + playerScore + " : " + computerScore;
+            let newScore = playerScore + ":" + computerScore;
+            score.textContent = newScore;
+            if(playerScore == 5){
+                matchWinner.textContent = "Congratulations! You won the match!";
             }
-            console.log(message);
+            if(computerScore == 5){
+                matchWinner.toLowerCase = "Oof! You just lost a mtch against a computer...";
+            }
         }
+
+        const rock = document.getElementById("rockbutton");
+        rock.addEventListener("click", function(){
+            evaluateChoice("rock");
+        });
+
+        const paper = document.getElementById("paperbutton");
+        paper.addEventListener("click", function(){
+            evaluateChoice("paper");
+        });
+
+        const scissors = document.getElementById("scissorsbutton");
+        scissors.addEventListener("click", function(){
+            evaluateChoice("scissors");
+        });
+
     </script>
 </body>
 </html>

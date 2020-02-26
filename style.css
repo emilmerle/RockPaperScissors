@@ -1,0 +1,25 @@
+.container {
+        text-align: center;
+}
+
+.buttons {
+    font-size: x-large;
+    font-family: monospace;
+    font-weight: bold;
+    height: 200px;
+    width: 200px;
+}
+
+.winner, .scoreHeader, .score {
+    margin-top: 25px;
+    font-size: x-large;
+    font-weight: bold;
+    font-family: monospace;
+}
+
+.matchWinner {
+    margin-top: 50px;
+    font-size: xx-large;
+    font-weight: bold;
+    font-family: monospace;
+}

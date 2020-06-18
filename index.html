@@ -6,19 +6,20 @@
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-
-    <div class="container">
-        <button class="buttons" id="rockbutton">Rock</button>
-        <button class="buttons" id="paperbutton">Paper</button>
-        <button class="buttons" id="scissorsbutton">Scissors</button>
-    </div>
-    <div class="container">
-        <div class="winner"></div>
-    </div>
-    <div class="container">
-        <div class="scoreHeader">Score:</div>
-        <div class="score">0:0</div>
-        <div class="matchWinner"></div>
+    <div class="centeredContainer">
+        <div class="container">
+            <button class="buttons" id="rockbutton">Rock</button>
+            <button class="buttons" id="paperbutton">Paper</button>
+            <button class="buttons" id="scissorsbutton">Scissors</button>
+        </div>
+        <div class="container">
+            <div class="winner"></div>
+        </div>
+        <div class="container">
+            <div class="scoreHeader">Score:</div>
+            <div class="score">0:0</div>
+            <div class="matchWinner"></div>
+        </div>
     </div>
 
     <script>
@@ -47,7 +48,7 @@
             let playerChoiceFinal = playerChoice.toLowerCase();
             let computerChoiceFinal = computerChoice.toLowerCase();
             if(playerChoiceFinal == computerChoiceFinal){
-                return ("Draw! Computer also chose " + playerChoiceFinal)
+                return ("Draw! Computer also chose " + playerChoiceFinal + "!")
             }
             switch (playerChoiceFinal) {
                 case "rock":
@@ -123,7 +124,7 @@
                 matchWinner.textContent = "Congratulations! You won the match!";
             }
             if(computerScore == 5){
-                matchWinner.textContent = "Oof! You just lost a match against a computer...";
+                matchWinner.textContent = "Oh no! You just lost a match against a computer...";
             }
         }
 

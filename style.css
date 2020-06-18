@@ -1,18 +1,18 @@
 body {
-    background-color: darksalmon;
+    background-color: rgb(252, 197, 178);
 }
 
 .centeredContainer {
     position: absolute;
-    background-color: indianred;
+    background-color: rgb(247, 159, 208);
     top: 50%;
     left: 50%;
-    height: 500px;
+    height: 700px;
     width: 1100px;
-    margin-top: -250px;
+    margin-top: -350px;
     margin-left: -550px;
-    border: 25px slateblue solid;
-    border-radius: 50px;
+    border: 15px rgb(171, 194, 212) solid;
+    border-radius: 40px;
 }
 
 .container {
@@ -24,12 +24,13 @@ body {
 
     color: rgb(116, 0, 211);
 
-    font-size: 40px;
-    font-family: monospace;
-    font-weight: bold;
+    font-size: 60px;
+    font-family: 'MuseoModerno', cursive;
+    font-weight: 900;
 
-    background-color: darksalmon;
-    border: 10px solid slateblue;
+    background-color: rgb(252, 197, 178);
+    border: 5px solid rgb(171, 194, 212);
+    border-radius: 20px;
     outline: none;
 
     width: 300px;
@@ -38,27 +39,34 @@ body {
     margin: 20px;
 
     transition-duration: 0.4s;
-    border-radius: 40px;
-    box-shadow: 0 0 0 10px slateblue;
+    box-shadow: 0 0 0  rgb(171, 194, 212);
 }
 
 .buttons:hover {
-    box-shadow: 0 0 0 slateblue;
+    box-shadow: 0 0 0 5px rgb(171, 194, 212);
 }
 
 
 .winner, .scoreHeader, .score {
     color: rgb(116, 0, 211);
-    margin-top: 25px;
-    font-size: x-large;
-    font-weight: bold;
-    font-family: monospace;
+    margin-top: 20px;
+    font-size: 30px;
+    font-weight: 900;
+    font-family: 'MuseoModerno', cursive;
 }
 
 .matchWinner {
     color: rgb(116, 0, 211);
-    margin-top: 50px;
-    font-size: xx-large;
-    font-weight: bold;
-    font-family: monospace;
+    margin-top: 20px;
+    font-size: 40px;
+    font-weight: 900;
+    font-family: 'MuseoModerno', cursive;
+}
+
+.header {
+    color: rgb(116, 0, 211);
+    margin: 20px;
+    font-size: 70px;
+    font-weight: 900;
+    font-family: 'MuseoModerno', cursive;
 }

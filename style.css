@@ -7,9 +7,9 @@ body {
     background-color: rgb(247, 159, 208);
     top: 50%;
     left: 50%;
-    height: 700px;
+    height: 640px;
     width: 1100px;
-    margin-top: -350px;
+    margin-top: -320px;
     margin-left: -550px;
     border: 15px rgb(171, 194, 212) solid;
     border-radius: 40px;
@@ -25,8 +25,7 @@ body {
     color: rgb(116, 0, 211);
 
     font-size: 60px;
-    font-family: 'MuseoModerno', cursive;
-    font-weight: 900;
+    font-family: monospace;    font-weight: 900;
 
     background-color: rgb(252, 197, 178);
     border: 5px solid rgb(171, 194, 212);
@@ -52,21 +51,19 @@ body {
     margin-top: 20px;
     font-size: 30px;
     font-weight: 900;
-    font-family: 'MuseoModerno', cursive;
-}
+    font-family: monospace;}
 
 .matchWinner {
     color: rgb(116, 0, 211);
     margin-top: 20px;
     font-size: 40px;
     font-weight: 900;
-    font-family: 'MuseoModerno', cursive;
-}
+    font-family: monospace;}
 
 .header {
     color: rgb(116, 0, 211);
     margin: 20px;
     font-size: 70px;
     font-weight: 900;
-    font-family: 'MuseoModerno', cursive;
+    font-family: monospace;
 }

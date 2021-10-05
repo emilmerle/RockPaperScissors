@@ -7,6 +7,11 @@
     <link href="https://fonts.googleapis.com/css2?family=MuseoModerno:wght@100&display=swap" rel="stylesheet">
 </head>
 <body>
+    <label class="switch">
+        <input type="checkbox" id="dmode-switch">
+        <span class="slider round"></span>
+    </label>
+    <div class="dmode-text">Toggle Dark Mode</div>
     <div class="centeredContainer">
         <div class = "header">Rock Paper Scissors by Emil M.</div>
         <div class="container">
@@ -25,6 +30,66 @@
     </div>
 
     <script>
+        const BG_COLOR = "rgb(252, 197, 178)";
+        const BG_COLOR_DARK = "#000000";
+        const BG_COLOR_CONTAINER = "rgb(247, 159, 208)";
+        const BG_COLOR_CONTAINER_DARK = "#150050";
+        const BORDER_COLOR_CONTAINER = "rgb(171, 194, 212)";
+        const BORDER_COLOR_CONTAINER_DARK = "#3F0071";
+        const TEXT_COLOR = "rgb(116, 0, 211)";
+        const TEXT_COLOR_DARK = "#610094";
+
+        const DARK_MODE = getDarkMode();
+        
+        // gets the dark mode option from url
+        function getDarkMode(){
+            var url_string = window.location.href;
+            var url = new URL(url_string);
+            var dark_mode_option = url.searchParams.get("dmode");
+            return dark_mode_option;
+        }
+
+        document.addEventListener("DOMContentLoaded", function(event) {
+            if (DARK_MODE == "true") {
+                activateDarkMode();
+                var dmodeBtn = document.getElementById("dmode-switch");
+                if (!dmodeBtn.checked) {
+                    dmodeBtn.checked = true;
+                }
+            }
+        });
+
+        var dmodeBtn = document.getElementById("dmode-switch");
+
+        dmodeBtn.addEventListener("change", function() {
+            if (this.checked) {
+                activateDarkMode();
+            } else {
+                deactivateDarkMode();
+            }
+        });
+
+        function activateDarkMode() {
+            var root = document.documentElement;
+            root.style.setProperty('--bg-color', BG_COLOR_DARK);
+            root.style.setProperty('--bg-color-container', BG_COLOR_CONTAINER_DARK);
+            root.style.setProperty('--border-color-container', BORDER_COLOR_CONTAINER_DARK);
+            root.style.setProperty('--text-color', TEXT_COLOR_DARK);
+
+            var newurl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?dmode=true';
+            window.history.pushState({path:newurl},'',newurl);
+        }
+
+        function deactivateDarkMode() {
+            var root = document.documentElement;
+            root.style.setProperty('--bg-color', BG_COLOR);
+            root.style.setProperty('--bg-color-container', BG_COLOR_CONTAINER);
+            root.style.setProperty('--border-color-container', BORDER_COLOR_CONTAINER);
+            root.style.setProperty('--text-color', TEXT_COLOR);
+
+            var newurl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?dmode=false';
+            window.history.pushState({path:newurl},'',newurl);
+        }
 
         //returns a pseudorandom choice
         function computerPlay(){
